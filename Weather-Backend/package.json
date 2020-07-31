@@ -1,13 +1,22 @@
 {
-  "name": "backend-hw9",
+  "name": "homework8-en0chwang",
   "version": "1.0.0",
-  "description": "",
+  "description": "Homework 8",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usc-csci571/homework8-En0chWang.git"
+  },
+  "author": "Yinuo Wang",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/usc-csci571/homework8-En0chWang/issues"
+  },
+  "homepage": "https://github.com/usc-csci571/homework8-En0chWang#readme",
   "dependencies": {
     "express": "^4.17.1",
     "request": "^2.88.0"

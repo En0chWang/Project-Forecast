@@ -1,0 +1,30 @@
+<div style="margin-bottom:40px" class="container">
+    <div class="row">
+        <div class="col">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" (click)="switchTab('currently')">Current</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" (click)="switchTab('hourly')">Hourly</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" (click)="switchTab('weekly')">Weekly</a>
+                </li>
+                <li class="nav-itm ml-auto"><a class="twitter-share-button" href={{tweetFeed}} target="_blank">
+
+                        <img src="https://img.icons8.com/color/48/000000/twitter.png" /></a>
+                </li>
+                <li class="nav-item" style="margin-bottom:0px">
+                    <a href="#">
+                        <i *ngIf="star_border" (click)="addToFavorite()" class="material-icons md-36">star_border</i>
+                        <i *ngIf="star" (click)="removeFromFavorite()" class="material-icons md-36 orange600">star</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<app-currentweather [msg]="msg" [city]="city" *ngIf="tabValue=='currently'"></app-currentweather>
+<app-hourlyweather [msg]="msg" *ngIf="tabValue=='hourly'"></app-hourlyweather>
+<app-weeklyweather [msg]="msg" [city]="city" *ngIf="tabValue=='weekly'"></app-weeklyweather>

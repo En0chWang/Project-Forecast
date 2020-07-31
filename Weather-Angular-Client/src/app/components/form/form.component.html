@@ -1,0 +1,128 @@
+<form [formGroup]="myForm">
+    <div id="panel_id" class="container" style="background-color:#5a88a4;padding-top:50px;padding-bottom:50px;">
+        <div class="row" id="search_panel_title">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <p class="text-center" style="font-size:30px;color:white;">
+                    Weather Search
+                </p>
+            </div>
+            <div class="col-sm-3"></div>
+
+        </div>
+
+        <div class="row" id="street_input">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-1">
+                <p class="text-left myPara">Street<span style="color: red;">*</span></p>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input formControlName="street" name="street" type="text" class="form-control"
+                        placeholder="Enter Street Name" [(ngModel)]="address_info.street">
+                    <div style="color:#a4201e" *ngIf="myForm.get('street').touched && myForm.get('street').value ==''">
+                        Please enter a street.
+                    </div>
+                </div>
+
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <div class="row" id="city_input">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-1">
+                <p class="text-left myPara">City<span style="color: red;">*</span></p>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input formControlName="city" name="city" type="text" matInput class="form-control"
+                        placeholder="Enter City Name" aria-label="Number" [(ngModel)]="address_info.city"
+                        (ngModelChange)="getCityOptions()" [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of city_options" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <div style="color:#a4201e" *ngIf="myForm.get('city').touched && myForm.get('city').value ==''">
+                        Please enter a city.
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <div class="row" id="state_input">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-1">
+                <p class="text-left myPara">State<span style="color: red;">*</span></p>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <select formControlName="state" name="state" class="form-control" [(ngModel)]="address_info.state">
+                        <option value="" selected disabled hidden>Select State
+                        </option>
+                        <option [value]="state.abbreviation" *ngFor="let state of states">{{state.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <div class="row" id="current_location_checkbox">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-8">
+                <div class="form-check">
+                    <input id="current_location_id" type="checkbox" class="form-check-input" id="current_location"
+                        (click)="getCurrentLocation()" [checked]="checkbox">
+                    <label class="form-check-label myPara">Current Location</label>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-8">
+                <button
+                    [disabled]="((address_info.street != '' && address_info.city != '' && address_info.state != '') || !search_status) ? null : 'true'"
+                    type="submit" class="btn btn-light myButton" (click)="getData()"><span style="color:grey"><i
+                            style="font-size: 17px;" class="material-icons">
+                            search
+                        </i>Search</span></button>
+                <button id="clear_id" type="button" class="btn btn-light myButton" (click)="clearAll()"><span
+                        style="color:grey"><i style="font-size: 17px;" class="material-icons">
+                            clear_all
+                        </i>Clear</span></button>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+    </div>
+</form>
+<div id="res_and_fav" class="container">
+    <div class="row">
+        <div class="col" style="text-align: center;">
+            <button id="result_id" type="button" class="btn btn-info myButton"
+                (click)="switchToResults()">Results</button>
+            <button id="favorite_id" type="button" class="btn btn-light myButton"
+                (click)="switchToFavorites()">Favorites</button>
+        </div>
+    </div>
+</div>
+<div *ngIf="result_flag">
+    <p style="background-color: #fcf3d5;padding:10px;color:#7e672f;margin:auto;width:80%" *ngIf="error_flag">Invalid
+        Address.
+    </p>
+    <app-weathertap *ngIf="flag" [msg]="msg" [city]="address_info.city" [state]="address_info.state"></app-weathertap>
+    <div *ngIf="progress_bar_flag" style="width:80%;margin:auto" class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 50%">
+        </div>
+    </div>
+</div>
+<div *ngIf="favorite_flag">
+    <app-favorites (messageEvent)="receiveMessage($event)"></app-favorites>
+</div>

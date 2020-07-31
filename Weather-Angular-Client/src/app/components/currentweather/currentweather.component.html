@@ -1,0 +1,72 @@
+<div id="visible_div_one" class="card"
+    style="margin-top:20px;margin-bottom:20px;width:80%;margin:auto;background-color: #91cbf0;">
+    <div class="card-body">
+
+        <table>
+            <tr style="width:100%">
+                <td style="padding-left:5%;width:50%">
+                    <h5 class="card-text" style="font-size:4vw;">{{msg.city}}</h5>
+                    <p class="card-text" style="font-size:3vw;">{{msg.weather.timezone}}</p>
+                    <p class="text-left" style="font-size:3vw;">{{msg.weather.currently.temperature}}
+                        &#8457;</p>
+                    <p class="text-left" style="font-size:2vw;">{{msg.weather.currently.summary}}</p>
+                </td>
+                <td style="width:50%;padding-left:10px;text-align: center;">
+                    <img src={{msg.seal.items[0].link}} class="img-fluid" style="max-width: 60%;max-height:60%;">
+                </td>
+            </tr>
+        </table>
+
+
+        <table style="width:100%;text-align: center;">
+            <tr style="margin:auto">
+                <td>
+                    <img matTooltip="Humidity" class="img-fluid" style='max-width:60%;height:auto;'
+                        src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-16-512.png'>
+                </td>
+                <td>
+                    <img matTooltip="Pressure" style='max-width:60%;height:auto;'
+                        src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-25-512.png'>
+                </td>
+                <td>
+                    <img matTooltip="Wind Speed" style='max-width:60%;height:auto;'
+                        src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-27-512.png'>
+                </td>
+                <td>
+                    <img matTooltip="Visibility" style='max-width:60%;height:auto;'
+                        src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-30-512.png'>
+                </td>
+                <td>
+                    <img matTooltip="Cloud Cover" style='max-width:60%;height:auto;'
+                        src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-28-512.png'>
+                </td>
+                <td>
+                    <img matTooltip="Ozone" style='max-width:60%;height:auto;'
+                        src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-24-512.png'>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{msg.weather.currently.humidity}}
+                </td>
+                <td>
+                    {{msg.weather.currently.pressure}}
+                </td>
+                <td>
+                    {{msg.weather.currently.windSpeed}}
+                </td>
+                <td>
+                    {{msg.weather.currently.visibility}}
+                </td>
+                <td>
+                    {{msg.weather.currently.cloudCover}}
+                </td>
+                <td>
+                    {{msg.weather.currently.ozone}}
+                </td>
+
+            </tr>
+
+        </table>
+    </div>
+</div>
