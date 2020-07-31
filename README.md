@@ -1,5 +1,5 @@
-# Project Forecast
-## A Personal Weather Assistant
+## Project Forecast
+A Personal Weather Assistant
 * Built an Android app using Java and a web app using TypeScript for showing weather information about current location and allowing users to search for weather in city all around the world.
 * Used Glide library to load city images and presented them as a list by implementing RecyclerView on Android app.
 * Applied Angular 8 as frontend framework for better code management and built a search panel using Bootstrap for enhancing user experience using responsive design on web application.
