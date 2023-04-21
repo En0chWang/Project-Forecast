@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.17",
-    "@angular/cli": "~8.3.17",
+    "@angular/cli": "~15.2.6",
     "@angular/compiler-cli": "~8.2.13",
     "@angular/language-service": "~8.2.13",
     "@types/node": "~8.9.4",
@@ -78,7 +78,7 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3",
-    "webpack-cli": "2.1.2",
+    "webpack-cli": "5.0.1",
     "opencollective": "^1.0.3",
     "serverless": "1.40.0",
     "serverless-apigw-binary": "^0.4.4"
